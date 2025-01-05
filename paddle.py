@@ -23,3 +23,9 @@ class Paddle():
             self.paddle_rect.x += self.velocity * delta_time
         if (pressed[pygame.K_d]):
             self.paddle_rect.x += self.velocity * delta_time
+        
+    def check_wall(self):
+        if self.paddle_rect.x < 0:
+            self.paddle_rect.x = 0
+        if self.paddle_rect.x > 704:
+            self.paddle_rect.x= 704

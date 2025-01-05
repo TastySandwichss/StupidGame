@@ -1,5 +1,6 @@
 import pygame
 from paddle import *
+from ball import *
 
 class Game():
 
@@ -14,6 +15,12 @@ class Game():
         self.paddle = pygame.transform.scale(self.paddle, (96,30))
         self.player = Paddle(self.window, 350, 450, self.paddle)
 
+        #ball
+        self.ball = pygame.image.load("images/ball.png")
+        self.ball = pygame.transform.scale(self.ball, (32,32))
+        self.superball = Ball(self.window, 378, 278, self.ball)
+        
+        
         #time
         self.clock = pygame.time.Clock()
 
@@ -31,7 +38,11 @@ class Game():
             #render
             self.window.blit(self.bg, (0, 0))
             self.player.draw()
+            self.superball.draw()
+            self.superball.move(delta_time)
             self.player.move(delta_time)
+            self.player.check_wall()
+            self.superball.touch_wall()
             
             pygame.display.update()
 
