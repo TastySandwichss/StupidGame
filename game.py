@@ -31,10 +31,10 @@ class Game():
             #render
             self.window.blit(self.bg, (0, 0))
             self.player.draw()
-            self.player.move(delta_time)
+            
+            
             
             pygame.display.update()
 
 
-game = Game()
-game.run()
+
